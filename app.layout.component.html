@@ -1,0 +1,41 @@
+<app-topbar [items]="data.menuItems" class="layout-topbar">
+  <div ngProjectAs="topbar-start">
+    <a href="/">
+      <img *ngIf="data.appLogo" [src]="data.appLogo" height="40" class="mr-2" />
+    </a>
+
+    <h3 *ngIf="!data.appLogo">{{ data.appName }}</h3>
+  </div>
+  <div ngProjectAs="topbar-end">
+    <p-menu #menu [model]="data.popupMenuItems ?? []" [popup]="true"></p-menu>
+    <ng-container *ngIf="userState$ | async as userState">
+      <ng-container
+        *ngIf="userState?.profilePictureUrl; else labelledProfilePicture"
+      >
+        <p-avatar
+          *ngIf="userState?.profilePictureUrl as url"
+          styleClass="cursor-pointer mr-2"
+          size="large"
+          shape="circle"
+          [image]="url"
+          (click)="menu.toggle($event)"
+        ></p-avatar>
+      </ng-container>
+      <ng-template #labelledProfilePicture>
+        <p-avatar
+          [label]="userState.username.charAt(0)"
+          styleClass="cursor-pointer mr-2"
+          size="large"
+          shape="circle"
+          (click)="menu.toggle($event)"
+        ></p-avatar> </ng-template
+    ></ng-container>
+  </div>
+</app-topbar>
+<div class="mt-8">
+  <div class="flex justify-content-center">
+    <div class="sm:w-12 md:w-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

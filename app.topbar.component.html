@@ -1,0 +1,10 @@
+<div class="layout-topbar w-full">
+  <p-menubar [model]="items">
+    <ng-template pTemplate="start">
+      <ng-content select="topbar-start"></ng-content>
+    </ng-template>
+    <ng-template pTemplate="end">
+      <ng-content select="topbar-end"></ng-content>
+    </ng-template>
+  </p-menubar>
+</div>
