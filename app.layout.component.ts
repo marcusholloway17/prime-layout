@@ -17,7 +17,12 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
     takeUntil(this.destroy$)
   );
   public data!: LayoutDataType;
-  public menuItems: MenuItem[] = [];
+  public menuItems: MenuItem[] = [
+    {
+      label: "Apps",
+      routerLink: ["/"],
+    },
+  ];
 
   public statisticRequestCount = 0;
 
