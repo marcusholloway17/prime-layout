@@ -19,7 +19,9 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
   public data!: LayoutDataType;
   public menuItems: MenuItem[] = [
     {
-      label: "Apps",
+      label: this.languageService.instant(
+        "app.modules.workspace.pages.schemas.title"
+      ),
       routerLink: ["/"],
     },
   ];
