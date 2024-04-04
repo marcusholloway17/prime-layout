@@ -77,7 +77,6 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log(this.authToken);
     this.route.data
       .pipe(
         takeUntil(this.destroy$),
