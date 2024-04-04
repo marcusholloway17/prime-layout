@@ -1,10 +1,10 @@
 <app-topbar [items]="data.menuItems" class="layout-topbar">
   <div ngProjectAs="topbar-start">
-    <a href="/">
+    <a routerLink="/" class="pl-5">
       <img *ngIf="data.appLogo" [src]="data.appLogo" height="40" class="mr-2" />
     </a>
 
-    <h3 *ngIf="!data.appLogo">{{ data.appName }}</h3>
+    <h3 routerLink="/" *ngIf="!data.appLogo">{{ data.appName }}</h3>
   </div>
   <div ngProjectAs="topbar-end">
     <p-menu #menu [model]="data.popupMenuItems ?? []" [popup]="true"></p-menu>
