@@ -30,34 +30,47 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
     {
       label: this.languageService.instant("app.routing.customers"),
       routerLink: [`/${environment.app.routing.customers}`],
+      icon: "pi pi-users",
     },
     {
       label: this.languageService.instant("app.routing.cards"),
       routerLink: [`/${environment.app.routing.cards}`],
+      icon: "pi pi-credit-card",
     },
     {
       label: this.languageService.instant("app.routing.invoices"),
       routerLink: [`/${environment.app.routing.invoices}`],
+      icon: "pi pi-ticket",
     },
     {
       label: this.languageService.instant("app.routing.rewards"),
       routerLink: [`/${environment.app.routing.rewards}`],
+      icon: "pi pi-bolt",
+    },
+    {
+      label: this.languageService.instant("app.routing.messages"),
+      routerLink: [`/${environment.app.routing.messages}`],
+      icon: "pi pi-comments",
     },
     {
       label: this.languageService.instant("app.routing.configurations"),
       // routerLink: ["/configurations"],
+      icon: "pi pi-cog",
       items: [
         {
           label: this.languageService.instant("app.routing.cardTypes"),
           routerLink: [`/${environment.app.routing.cardTypes}`],
+          icon: "pi pi-cog",
         },
         {
           label: this.languageService.instant("app.routing.amountRewardGrids"),
           routerLink: [`/${environment.app.routing.amountRewardGrids}`],
+          icon: "pi pi-cog",
         },
         {
           label: this.languageService.instant("app.routing.pointRewardGrids"),
           routerLink: [`/${environment.app.routing.pointRewardGrids}`],
+          icon: "pi pi-cog",
         },
       ],
     },
