@@ -32,11 +32,11 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
       routerLink: [`/${environment.app.routing.customers}`],
       icon: "pi pi-users",
     },
-    {
-      label: this.languageService.instant("app.routing.cards"),
-      routerLink: [`/${environment.app.routing.cards}`],
-      icon: "pi pi-credit-card",
-    },
+    // {
+    //   label: this.languageService.instant("app.routing.cards"),
+    //   routerLink: [`/${environment.app.routing.cards}`],
+    //   icon: "pi pi-credit-card",
+    // },
     {
       label: this.languageService.instant("app.routing.invoices"),
       routerLink: [`/${environment.app.routing.invoices}`],
