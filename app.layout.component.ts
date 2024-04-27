@@ -32,11 +32,11 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
       routerLink: [`/${environment.app.routing.customers}`],
       icon: "pi pi-users",
     },
-    // {
-    //   label: this.languageService.instant("app.routing.cards"),
-    //   routerLink: [`/${environment.app.routing.cards}`],
-    //   icon: "pi pi-credit-card",
-    // },
+    {
+      label: this.languageService.instant("app.routing.cards"),
+      routerLink: [`/${environment.app.routing.cards}`],
+      icon: "pi pi-credit-card",
+    },
     {
       label: this.languageService.instant("app.routing.invoices"),
       routerLink: [`/${environment.app.routing.invoices}`],
@@ -48,9 +48,14 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
       icon: "pi pi-bolt",
     },
     {
+      label: this.languageService.instant("app.routing.events"),
+      routerLink: [`/${environment.app.routing.events}`],
+      icon: "pi pi-images",
+    },
+    {
       label: this.languageService.instant("app.routing.messages"),
       routerLink: [`/${environment.app.routing.messages}`],
-      icon: "pi pi-comments",
+      icon: "pi pi-megaphone",
     },
     {
       label: this.languageService.instant("app.routing.configurations"),
