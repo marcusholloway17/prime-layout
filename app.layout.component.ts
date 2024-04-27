@@ -1,15 +1,7 @@
 import { Component, Inject, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MenuItem } from "primeng/api";
-import {
-  Subject,
-  interval,
-  lastValueFrom,
-  map,
-  switchMap,
-  takeUntil,
-  tap,
-} from "rxjs";
+import { Subject, map, takeUntil, tap } from "rxjs";
 import { LayoutDataType } from "./types";
 import { AuthService } from "../auth/services/auth.service";
 import { AUTH_SERVICE } from "../auth/types";
