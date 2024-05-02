@@ -9,27 +9,13 @@
   <div ngProjectAs="topbar-end">
     <p-menu #menu [model]="data.popupMenuItems ?? []" [popup]="true"></p-menu>
     <ng-container *ngIf="userState$ | async as userState">
-      <ng-container
-        *ngIf="userState?.profilePictureUrl; else labelledProfilePicture"
-      >
-        <p-avatar
-          *ngIf="userState?.profilePictureUrl as url"
-          styleClass="cursor-pointer mr-2"
-          size="large"
-          shape="circle"
-          [image]="url"
-          (click)="menu.toggle($event)"
-        ></p-avatar>
+      <ng-container *ngIf="userState?.profilePictureUrl; else labelledProfilePicture">
+        <p-avatar *ngIf="userState?.profilePictureUrl as url" styleClass="cursor-pointer mr-2" size="large"
+          shape="circle" [image]="url" (click)="menu.toggle($event)"></p-avatar>
       </ng-container>
       <ng-template #labelledProfilePicture>
-        <p-avatar
-          [label]="userState.username.charAt(0)"
-          styleClass="cursor-pointer mr-2"
-          size="large"
-          shape="circle"
-          (click)="menu.toggle($event)"
-        ></p-avatar> </ng-template
-    ></ng-container>
+        <p-avatar [label]="userState.username.charAt(0)" styleClass="cursor-pointer mr-2" size="large" shape="circle"
+          (click)="menu.toggle($event)"></p-avatar> </ng-template></ng-container>
   </div>
 </app-topbar>
 <div class="mt-8">

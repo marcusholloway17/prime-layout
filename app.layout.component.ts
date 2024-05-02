@@ -95,12 +95,12 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
             ...data,
             menuItems: this.menuItems,
             popupMenuItems: [
-              {
-                label: this.languageService.instant("auth.profile"),
-                icon: "pi pi-fw pi-user",
-                url: `${environment.auth.app}/#/auth/callback?authToken=${this.authToken}`,
-                target: "_blank",
-              },
+              // {
+              //   label: this.languageService.instant("auth.profile"),
+              //   icon: "pi pi-fw pi-user",
+              //   url: `${environment.auth.app}/#/auth/callback?authToken=${this.authToken}`,
+              //   target: "_blank",
+              // },
               {
                 label: this.languageService.instant("sign-out.label"),
                 icon: "pi pi-fw pi-sign-out",
