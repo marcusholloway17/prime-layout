@@ -7,6 +7,7 @@ import { AuthService } from "../auth/services/auth.service";
 import { AUTH_SERVICE } from "../auth/types";
 import { LanguageService } from "src/app/helpers/language.service";
 import { environment } from "src/environments/environment.development";
+import { ThemeService } from "src/app/helpers/theme.service";
 
 @Component({
   selector: "app-layout",
@@ -79,7 +80,8 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     @Inject(AUTH_SERVICE) private authService: AuthService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private themeService: ThemeService
   ) {
     this.authService.signInState$
       .pipe(tap((state) => (this.authToken = state?.authToken)))
@@ -100,6 +102,24 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
               //   icon: "pi pi-fw pi-user",
               //   url: `${environment.auth.app}/#/auth/callback?authToken=${this.authToken}`,
               //   target: "_blank",
+              // },
+              // {
+              //   label: this.languageService.instant(
+              //     this.themeService.getTheme() == this.themeService.lightTheme
+              //       ? "app.theme.themes.light"
+              //       : "app.theme.themes.dark"
+              //   ),
+              //   icon:
+              //     this.themeService.getTheme() == this.themeService.lightTheme
+              //       ? "pi pi-fw pi-sun"
+              //       : "pi pi-fw pi-moon",
+              //   command: () => {
+              //     this.themeService.switch(
+              //       this.themeService.getTheme() == this.themeService.lightTheme
+              //         ? this.themeService.darkTheme
+              //         : this.themeService.lightTheme
+              //     );
+              //   },
               // },
               {
                 label: this.languageService.instant("sign-out.label"),
