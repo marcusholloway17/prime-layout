@@ -1,11 +1,9 @@
-import { Component, Inject, OnDestroy, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Component, Inject, Input, OnDestroy, OnInit } from "@angular/core";
 import { MenuItem } from "primeng/api";
-import { Subject, interval, map, switchMap, takeUntil, tap } from "rxjs";
+import { Subject, takeUntil } from "rxjs";
 import { LayoutDataType } from "./types";
 import { AuthService } from "../auth/services/auth.service";
 import { AUTH_SERVICE } from "../auth/types";
-import { LanguageService } from "src/app/helpers/language.service";
 
 @Component({
   selector: "app-layout",
@@ -17,49 +15,11 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
     takeUntil(this.destroy$)
   );
   public data!: LayoutDataType;
-  public menuItems: MenuItem[] = [
-    {
-      label: this.languageService.instant(
-        "app.modules.workspace.pages.schemas.title"
-      ),
-      routerLink: ["/"],
-    },
-  ];
+  @Input() public routes: MenuItem[] = [];
 
-  public statisticRequestCount = 0;
+  constructor(@Inject(AUTH_SERVICE) private authService: AuthService) {}
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    @Inject(AUTH_SERVICE) private authService: AuthService,
-    private languageService: LanguageService
-  ) {}
-
-  ngOnInit(): void {
-    this.route.data
-      .pipe(
-        takeUntil(this.destroy$),
-        map((data) => {
-          return {
-            ...data,
-            menuItems: this.menuItems,
-            popupMenuItems: [
-              {
-                label: this.languageService.instant("sign-out.label"),
-                icon: "pi pi-fw pi-sign-out",
-                command: () => {
-                  this.router.navigate(["/auth/sign-out"]);
-                },
-              },
-            ],
-          };
-        }),
-        tap((data) => {
-          this.data = data as LayoutDataType;
-        })
-      )
-      .subscribe();
-  }
+  ngOnInit(): void {}
 
   ngOnDestroy(): void {
     this.destroy$.next();

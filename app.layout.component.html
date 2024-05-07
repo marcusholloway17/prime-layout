@@ -1,41 +1,17 @@
-<app-topbar [items]="data.menuItems" class="layout-topbar">
-  <div ngProjectAs="topbar-start">
-    <a href="/">
-      <img *ngIf="data.appLogo" [src]="data.appLogo" height="40" class="mr-2" />
-    </a>
-
-    <h3 *ngIf="!data.appLogo">{{ data.appName }}</h3>
-  </div>
-  <div ngProjectAs="topbar-end">
-    <p-menu #menu [model]="data.popupMenuItems ?? []" [popup]="true"></p-menu>
-    <ng-container *ngIf="userState$ | async as userState">
-      <ng-container
-        *ngIf="userState?.profilePictureUrl; else labelledProfilePicture"
-      >
-        <p-avatar
-          *ngIf="userState?.profilePictureUrl as url"
-          styleClass="cursor-pointer mr-2"
-          size="large"
-          shape="circle"
-          [image]="url"
-          (click)="menu.toggle($event)"
-        ></p-avatar>
-      </ng-container>
-      <ng-template #labelledProfilePicture>
-        <p-avatar
-          [label]="userState.username.charAt(0)"
-          styleClass="cursor-pointer mr-2"
-          size="large"
-          shape="circle"
-          (click)="menu.toggle($event)"
-        ></p-avatar> </ng-template
-    ></ng-container>
-  </div>
-</app-topbar>
-<div class="mt-8">
-  <div class="flex justify-content-center">
-    <div class="sm:w-12 md:w-12">
-      <router-outlet></router-outlet>
+<div class="surface-ground px-4 py-8 md:px-6 lg:px-8" style="height: 100vh;">
+  <div class="p-fluid flex flex-column lg:flex-row">
+    <ul *ngIf="routes?.length"
+      class="list-none m-0 p-0 flex flex-row lg:flex-column justify-content-evenly md:justify-content-between lg:justify-content-start mb-5 lg:pr-8 lg:mb-0">
+      <li *ngFor="let route of routes" [routerLink]="route.routerLink" routerLinkActive="surface-hover border-round">
+        <a pRipple
+          class="flex align-items-center cursor-pointer p-3 border-round text-800 hover:surface-hover transition-duration-150 transition-colors">
+          <i *ngIf="route.icon " [class]="route.icon"></i>
+          <span class="font-medium hidden md:block">{{ route?.label }}</span>
+        </a>
+      </li>
+    </ul>
+    <div class="surface-card p-5 shadow-2 border-round flex-auto">
+      <ng-content></ng-content>
     </div>
   </div>
 </div>
