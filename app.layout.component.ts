@@ -1,9 +1,10 @@
 import { Component, Inject, Input, OnDestroy, OnInit } from "@angular/core";
 import { MenuItem } from "primeng/api";
-import { Subject, takeUntil } from "rxjs";
+import { Subject, takeUntil, tap } from "rxjs";
 import { LayoutDataType } from "./types";
 import { AuthService } from "../auth/services/auth.service";
 import { AUTH_SERVICE } from "../auth/types";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-layout",
@@ -14,10 +15,17 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
   public userState$ = this.authService.userState$.pipe(
     takeUntil(this.destroy$)
   );
-  public data!: LayoutDataType;
+  public data!: any;
   @Input() public routes: MenuItem[] = [];
+  @Input() public title!: string;
+  @Input() public description!: string;
 
-  constructor(@Inject(AUTH_SERVICE) private authService: AuthService) {}
+  constructor(
+    @Inject(AUTH_SERVICE) private authService: AuthService,
+    private route: ActivatedRoute
+  ) {
+    this.route.data.pipe(tap((state) => (this.data = state))).subscribe();
+  }
 
   ngOnInit(): void {}
 
