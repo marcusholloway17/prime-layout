@@ -1,4 +1,4 @@
-<div class="surface-ground px-4 md:px-6 pt-4 lg:px-8" style="height: 100vh;">
+<div class="surface-ground px-4 md:px-6 py-4 lg:px-8" style="min-height: 100vh;">
   <div class="text-center">
     <img *ngIf="data.appLogo" [src]="data.appLogo" height="70" class="mr-2" />
     <h3 routerLink="/" *ngIf="data.appName">{{ data.appName | uppercase }}</h3>
@@ -16,8 +16,8 @@
     </ul>
     <div class="surface-card p-5 shadow-2 border-round flex-auto">
       <div *ngIf="title || description">
-        <div class="text-900 font-semibold text-lg mt-3 mb-1" *ngIf="title">{{title}}</div>
-        <div class="text-500" *ngIf="description">{{description}}</div>
+        <div class="text-3xl text-900 font-semibold text-lg mb-1" *ngIf="title">{{title}}</div>
+        <div class="text-500 line-height-2" *ngIf="description">{{description}}</div>
         <p-divider></p-divider>
       </div>
       <ng-content></ng-content>
