@@ -1,7 +1,7 @@
-<div class="surface-ground px-4 pt-2 md:px-6 lg:px-8" style="height: 100vh;">
+<div class="surface-ground px-4 md:px-6 pt-4 lg:px-8" style="height: 100vh;">
   <div class="text-center">
     <img *ngIf="data.appLogo" [src]="data.appLogo" height="70" class="mr-2" />
-    <h3 routerLink="/" *ngIf="data.appName">{{ data.appName }}</h3>
+    <h3 routerLink="/" *ngIf="data.appName">{{ data.appName | uppercase }}</h3>
   </div>
   <div class="p-fluid flex flex-column lg:flex-row">
     <ul *ngIf="routes?.length"
