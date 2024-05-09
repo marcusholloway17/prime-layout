@@ -15,7 +15,7 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
   public userState$ = this.authService.userState$.pipe(
     takeUntil(this.destroy$)
   );
-  public data!: any;
+  @Input() public data!: any;
   @Input() public routes: MenuItem[] = [];
   @Input() public title!: string;
   @Input() public description!: string;
