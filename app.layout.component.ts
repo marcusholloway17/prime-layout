@@ -45,11 +45,11 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
       routerLink: [`/${environment.app.routing.events}`],
       icon: "pi pi-images",
     },
-    {
-      label: this.languageService.instant("app.routing.messages"),
-      routerLink: [`/${environment.app.routing.messages}`],
-      icon: "pi pi-megaphone",
-    },
+    // {
+    //   label: this.languageService.instant("app.routing.messages"),
+    //   routerLink: [`/${environment.app.routing.messages}`],
+    //   icon: "pi pi-megaphone",
+    // },
     {
       label: this.languageService.instant("app.routing.configurations"),
       // routerLink: ["/configurations"],
