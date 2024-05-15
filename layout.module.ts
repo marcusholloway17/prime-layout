@@ -8,6 +8,8 @@ import { AppTopBarComponent } from "./app.topbar.component";
 import { BreadcrumbModule } from "primeng/breadcrumb";
 import { MegaMenuModule } from "primeng/megamenu";
 import { DividerModule } from "primeng/divider";
+import { ButtonModule } from "primeng/button";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
   declarations: [AppLayoutComponent, AppTopBarComponent],
@@ -19,6 +21,8 @@ import { DividerModule } from "primeng/divider";
     BreadcrumbModule,
     MegaMenuModule,
     DividerModule,
+    ButtonModule,
+    TranslateModule,
   ],
   exports: [AppLayoutComponent, AppTopBarComponent],
 })
