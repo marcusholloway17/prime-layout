@@ -4,7 +4,7 @@ import { Subject, takeUntil, tap } from "rxjs";
 import { LayoutDataType } from "./types";
 import { AuthService } from "../auth/services/auth.service";
 import { AUTH_SERVICE } from "../auth/types";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-layout",
@@ -22,12 +22,17 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
 
   constructor(
     @Inject(AUTH_SERVICE) private authService: AuthService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.route.data.pipe(tap((state) => (this.data = state))).subscribe();
   }
 
   ngOnInit(): void {}
+
+  onSignOut() {
+    this.router.navigate(["auth", "sign-out"]);
+  }
 
   ngOnDestroy(): void {
     this.destroy$.next();
