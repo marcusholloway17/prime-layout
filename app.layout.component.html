@@ -14,7 +14,7 @@
           <span class="font-medium hidden md:block">{{ route?.label }}</span>
         </a>
       </li>
-      <li [routerLink]="['/auth', 'sign-out']">
+      <li class="mt-5" (click)="confirm($event)">
         <a pRipple
           class="flex align-items-end cursor-pointer p-3 border-round text-800 hover:surface-hover transition-duration-150 transition-colors">
           <i [class]="'pi pi-sign-out mr-2'"></i>

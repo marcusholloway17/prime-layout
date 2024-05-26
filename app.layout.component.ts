@@ -1,10 +1,10 @@
 import { Component, Inject, Input, OnDestroy, OnInit } from "@angular/core";
-import { MenuItem } from "primeng/api";
+import { ConfirmationService, MenuItem } from "primeng/api";
 import { Subject, takeUntil, tap } from "rxjs";
-import { LayoutDataType } from "./types";
 import { AuthService } from "../auth/services/auth.service";
 import { AUTH_SERVICE } from "../auth/types";
 import { ActivatedRoute, Router } from "@angular/router";
+import { LanguageService } from "src/app/helpers/language.service";
 
 @Component({
   selector: "app-layout",
@@ -23,7 +23,9 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
   constructor(
     @Inject(AUTH_SERVICE) private authService: AuthService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private confirmationService: ConfirmationService,
+    private languageService: LanguageService
   ) {
     this.route.data.pipe(tap((state) => (this.data = state))).subscribe();
   }
@@ -32,6 +34,22 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
 
   onSignOut() {
     this.router.navigate(["auth", "sign-out"]);
+  }
+
+  confirm(event: Event) {
+    if (event?.target)
+      this.confirmationService.confirm({
+        target: event.target,
+        message: this.languageService.instant("app.prompt.logout"),
+        acceptLabel: this.languageService.instant("app.actions.logout"),
+        rejectLabel: this.languageService.instant("app.actions.cancel"),
+        acceptButtonStyleClass:
+          "p-button-text p-button-outlined p-button-danger ",
+        icon: "pi pi-exclamation-triangle",
+        accept: () => {
+          this.router.navigate(["auth", "sign-out"]);
+        },
+      });
   }
 
   ngOnDestroy(): void {
