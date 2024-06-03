@@ -8,6 +8,8 @@ import { AppTopBarComponent } from "./app.topbar.component";
 import { BreadcrumbModule } from "primeng/breadcrumb";
 import { MegaMenuModule } from "primeng/megamenu";
 import { TabMenuModule } from "primeng/tabmenu";
+import { StyleClassModule } from "primeng/styleclass";
+import { ButtonModule } from "primeng/button";
 
 @NgModule({
   declarations: [AppLayoutComponent, AppTopBarComponent],
@@ -19,6 +21,8 @@ import { TabMenuModule } from "primeng/tabmenu";
     BreadcrumbModule,
     MegaMenuModule,
     TabMenuModule,
+    StyleClassModule,
+    ButtonModule,
   ],
   exports: [AppLayoutComponent, AppTopBarComponent],
 })

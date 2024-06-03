@@ -13,6 +13,7 @@ import { ThemeService } from "src/app/helpers/theme.service";
 })
 export class AppLayoutComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
+  public data$ = this.route.data;
 
   constructor(
     private route: ActivatedRoute,
