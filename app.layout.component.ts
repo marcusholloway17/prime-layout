@@ -22,6 +22,10 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
     {
       label: "Mon compte",
       icon: "pi pi-fw pi-user",
+      routerLink: environment.app.routing.profile,
+      routerLinkActiveOptions: {
+        exact: true,
+      },
     },
     {
       label: this.languageService.instant("sign-out.label"),

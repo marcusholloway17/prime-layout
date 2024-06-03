@@ -57,20 +57,20 @@
         </div>
       </li> -->
       <li>
-        <a pRipple
+        <a pRipple href="/#/"
           class="flex px-0 lg:px-5 py-3 hover:text-yellow-600 font-medium transition-colors transition-duration-150 cursor-pointer"
           routerLinkActive="router-link-active">
           <span>Accueil</span>
         </a>
       </li>
       <li>
-        <a pRipple
+        <a pRipple href="/#/rewards"
           class="flex px-0 lg:px-5 py-3 hover:text-yellow-600 font-medium transition-colors transition-duration-150 cursor-pointer">
           <span>Récompenses</span>
         </a>
       </li>
       <li>
-        <a pRipple
+        <a pRipple href="/#/events"
           class="flex px-0 lg:px-5 py-3 hover:text-yellow-600 font-medium transition-colors transition-duration-150 cursor-pointer">
           <span>évènements</span>
         </a>
@@ -81,10 +81,11 @@
       <p-button *ngIf="themeService.theme$ | async as theme" [icon]="theme == 'dark' ? 'pi pi-sun' :'pi pi-moon'"
         (onClick)="themeService.switch(theme == 'dark' ? 'light' : 'dark')"
         styleClass="p-button-rounded p-button-warning p-button-text mr-2"></p-button>
-      <p-button icon="pi pi-bell" styleClass="p-button-rounded p-button-warning p-button-text mr-2"
-        badge="8"></p-button>
+      <p-button icon="pi pi-bell" styleClass="p-button-rounded p-button-warning p-button-text mr-2" badge="8"
+        routerLink="/notifications"></p-button>
       <p-avatar [label]="signInState.lastname.at(0) +''+ signInState.firstname.at(0)" styleClass="mr-2 cursor-pointer"
-        size="large" shape="circle" (click)="op.toggle($event)"></p-avatar>
+        size="large" shape="circle" (click)="op.toggle($event)"
+        [style]="{ 'background-color': '#ffffff', color: '#000000' }"></p-avatar>
       <p-overlayPanel #op>
         <ng-template pTemplate="content" style="padding: 0 !important">
           <p-menu [model]="menus"></p-menu>
