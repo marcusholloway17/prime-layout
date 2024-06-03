@@ -10,6 +10,7 @@ import { MegaMenuModule } from "primeng/megamenu";
 import { TabMenuModule } from "primeng/tabmenu";
 import { StyleClassModule } from "primeng/styleclass";
 import { ButtonModule } from "primeng/button";
+import { OverlayPanelModule } from "primeng/overlaypanel";
 
 @NgModule({
   declarations: [AppLayoutComponent, AppTopBarComponent],
@@ -23,6 +24,7 @@ import { ButtonModule } from "primeng/button";
     TabMenuModule,
     StyleClassModule,
     ButtonModule,
+    OverlayPanelModule,
   ],
   exports: [AppLayoutComponent, AppTopBarComponent],
 })

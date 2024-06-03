@@ -11,7 +11,7 @@
     <section>
     </section>
     <ul class="list-none p-0 m-0 flex lg:align-items-center text-gray-400 select-none flex-column lg:flex-row">
-      <li>
+      <!-- <li>
         <a pRipple
           class="flex px-0 lg:px-5 py-3 align-items-center hover:text-blue-600 font-medium transition-colors transition-duration-150 cursor-pointer"
           pStyleClass="@next" enterClass="hidden" enterActiveClass="scalein" leaveToClass="hidden"
@@ -55,36 +55,46 @@
             </div>
           </div>
         </div>
-      </li>
+      </li> -->
       <li>
         <a pRipple
-          class="flex px-0 lg:px-5 py-3 hover:text-blue-600 font-medium transition-colors transition-duration-150 cursor-pointer">
-          <span>Corporate</span>
+          class="flex px-0 lg:px-5 py-3 hover:text-yellow-600 font-medium transition-colors transition-duration-150 cursor-pointer"
+          routerLinkActive="router-link-active">
+          <span>Accueil</span>
         </a>
       </li>
       <li>
         <a pRipple
-          class="flex px-0 lg:px-5 py-3 hover:text-blue-600 font-medium transition-colors transition-duration-150 cursor-pointer">
-          <span>Resources</span>
+          class="flex px-0 lg:px-5 py-3 hover:text-yellow-600 font-medium transition-colors transition-duration-150 cursor-pointer">
+          <span>Récompenses</span>
         </a>
       </li>
       <li>
         <a pRipple
-          class="flex px-0 lg:px-5 py-3 hover:text-blue-600 font-medium transition-colors transition-duration-150 cursor-pointer">
-          <span>Pricing</span>
+          class="flex px-0 lg:px-5 py-3 hover:text-yellow-600 font-medium transition-colors transition-duration-150 cursor-pointer">
+          <span>évènements</span>
         </a>
       </li>
     </ul>
-    <div
+    <div *ngIf="signInState$ | async as signInState"
       class="flex justify-content-between lg:block border-top-1 lg:border-top-none border-gray-800 py-3 lg:py-0 mt-3 lg:mt-0">
-      <button pButton pRipple label="Login" class="p-button-text font-bold"></button>
-      <button pButton pRipple label="Register" class="ml-3 font-bold"></button>
+      <p-button *ngIf="themeService.theme$ | async as theme" [icon]="theme == 'dark' ? 'pi pi-sun' :'pi pi-moon'"
+        (onClick)="themeService.switch(theme == 'dark' ? 'light' : 'dark')"
+        styleClass="p-button-rounded p-button-warning p-button-text mr-2"></p-button>
+      <p-button icon="pi pi-bell" styleClass="p-button-rounded p-button-warning p-button-text mr-2"
+        badge="8"></p-button>
+      <p-avatar [label]="signInState.lastname.at(0) +''+ signInState.firstname.at(0)" styleClass="mr-2 cursor-pointer"
+        size="large" shape="circle" (click)="op.toggle($event)"></p-avatar>
+      <p-overlayPanel #op>
+        <ng-template pTemplate="content" style="padding: 0 !important">
+          <p-menu [model]="menus"></p-menu>
+        </ng-template>
+      </p-overlayPanel>
     </div>
   </div>
 </div>
-<div class="surface-section px-4 md:px-8 lg:px-8 flex justify-content-around">
-  <div class="border-2 border-dashed surface-border border-round surface-card"
-    style="min-height: 20rem; min-width: 60vw;">
+<div class="surface-section px-2 md:px-8 lg:px-8 flex justify-content-around">
+  <div class="border-round layout-container">
     <router-outlet></router-outlet>
   </div>
 </div>
