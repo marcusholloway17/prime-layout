@@ -57,6 +57,10 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {}
 
+  routeTo(path: string) {
+    this.router.navigate([path]);
+  }
+
   ngOnDestroy(): void {
     this.destroy$.next();
   }

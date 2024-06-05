@@ -1,5 +1,5 @@
 <div class="bg-gray-900 py-3 px-6 shadow-2 flex align-items-center justify-content-between relative layout-topbar">
-  <a href="/#/">
+  <a (click)="routeTo('/')">
     <img *ngIf="data$ | async as data" [src]="data['appLogo']" alt="Image" height="50">
   </a>
   <a pRipple class="cursor-pointer block lg:hidden text-gray-400" pStyleClass="@next" enterClass="hidden"
@@ -56,22 +56,21 @@
           </div>
         </div>
       </li> -->
-      <li>
-        <a pRipple href="/#/"
-          class="flex px-0 lg:px-5 py-3 hover:text-yellow-600 font-medium transition-colors transition-duration-150 cursor-pointer"
-          routerLinkActive="router-link-active">
+      <li routerLink="/home" routerLinkActive="surface-hover border-round">
+        <a pRipple
+          class="flex px-0 lg:px-5 py-3 hover:text-white-100 font-medium transition-colors transition-duration-150 cursor-pointer">
           <span>Accueil</span>
         </a>
       </li>
-      <li>
-        <a pRipple href="/#/rewards"
-          class="flex px-0 lg:px-5 py-3 hover:text-yellow-600 font-medium transition-colors transition-duration-150 cursor-pointer">
+      <li routerLink="/rewards" routerLinkActive="surface-hover border-round">
+        <a pRipple
+          class="flex px-0 lg:px-5 py-3 hover:text-white-100 font-medium transition-colors transition-duration-150 cursor-pointer">
           <span>Récompenses</span>
         </a>
       </li>
-      <li>
-        <a pRipple href="/#/events"
-          class="flex px-0 lg:px-5 py-3 hover:text-yellow-600 font-medium transition-colors transition-duration-150 cursor-pointer">
+      <li routerLink="/events" routerLinkActive="surface-hover border-round">
+        <a pRipple
+          class="flex px-0 lg:px-5 py-3 hover:text-white-100 font-medium transition-colors transition-duration-150 cursor-pointer">
           <span>évènements</span>
         </a>
       </li>
@@ -80,8 +79,8 @@
       class="flex justify-content-between lg:block border-top-1 lg:border-top-none border-gray-800 py-3 lg:py-0 mt-3 lg:mt-0">
       <p-button *ngIf="themeService.theme$ | async as theme" [icon]="theme == 'dark' ? 'pi pi-sun' :'pi pi-moon'"
         (onClick)="themeService.switch(theme == 'dark' ? 'light' : 'dark')"
-        styleClass="p-button-rounded p-button-warning p-button-text mr-2"></p-button>
-      <p-button icon="pi pi-bell" styleClass="p-button-rounded p-button-warning p-button-text mr-2" badge="8"
+        styleClass="p-button-rounded p-button-text mr-2"></p-button>
+      <p-button icon="pi pi-bell" styleClass="p-button-rounded p-button-text mr-2" badge="8"
         routerLink="/notifications"></p-button>
       <p-avatar [label]="signInState.lastname.at(0) +''+ signInState.firstname.at(0)" styleClass="mr-2 cursor-pointer"
         size="large" shape="circle" (click)="op.toggle($event)"
@@ -94,7 +93,7 @@
     </div>
   </div>
 </div>
-<div class="surface-section px-2 md:px-8 lg:px-8 flex justify-content-around">
+<div class="px-2 md:px-8 lg:px-8 flex justify-content-around">
   <div class="border-round layout-container">
     <router-outlet></router-outlet>
   </div>
