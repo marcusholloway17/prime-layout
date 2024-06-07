@@ -28,6 +28,17 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
       },
     },
     {
+      label: "Notifications",
+      icon: "pi pi-fw pi-bell",
+      routerLink:
+        environment.app.routing.profile +
+        "/" +
+        environment.app.routing.notifications,
+      routerLinkActiveOptions: {
+        exact: true,
+      },
+    },
+    {
       label: this.languageService.instant("sign-out.label"),
       icon: "pi pi-fw pi-sign-out",
       command: () => {
