@@ -11,6 +11,7 @@ import { TabMenuModule } from "primeng/tabmenu";
 import { StyleClassModule } from "primeng/styleclass";
 import { ButtonModule } from "primeng/button";
 import { OverlayPanelModule } from "primeng/overlaypanel";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
   declarations: [AppLayoutComponent, AppTopBarComponent],
@@ -25,6 +26,7 @@ import { OverlayPanelModule } from "primeng/overlaypanel";
     StyleClassModule,
     ButtonModule,
     OverlayPanelModule,
+    TranslateModule,
   ],
   exports: [AppLayoutComponent, AppTopBarComponent],
 })

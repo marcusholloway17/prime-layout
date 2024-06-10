@@ -20,7 +20,7 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
   public signInState$ = this.authService.signInState$;
   public menus: MenuItem[] = [
     {
-      label: "Mon compte",
+      label: this.languageService.instant("app.routing.myAccount"),
       icon: "pi pi-fw pi-user",
       routerLink: environment.app.routing.profile,
       routerLinkActiveOptions: {
@@ -28,7 +28,7 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
       },
     },
     {
-      label: "Notifications",
+      label: this.languageService.instant("app.routing.notifications"),
       icon: "pi pi-fw pi-bell",
       routerLink:
         environment.app.routing.profile +
@@ -39,7 +39,7 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
       },
     },
     {
-      label: this.languageService.instant("sign-out.label"),
+      label: this.languageService.instant("app.routing.logout"),
       icon: "pi pi-fw pi-sign-out",
       command: () => {
         this.confirmationService.confirm({
