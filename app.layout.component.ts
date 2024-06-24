@@ -1,7 +1,7 @@
 import { Component, Inject, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ConfirmationService, MenuItem } from "primeng/api";
-import { Subject, map, takeUntil, tap } from "rxjs";
+import { Subject, map, take, takeUntil, tap } from "rxjs";
 import { LayoutDataType } from "./types";
 import { LanguageService } from "src/app/helpers/language.service";
 import { environment } from "src/environments/environment.development";
@@ -50,7 +50,7 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
           rejectButtonStyleClass: "p-button btn-dark-outline",
           acceptButtonStyleClass: "p-button btn-dark",
           accept: () => {
-            this.authService.logout();
+            this.authService.logout().pipe(take(1)).subscribe();
           },
         });
       },
