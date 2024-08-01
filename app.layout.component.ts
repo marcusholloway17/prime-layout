@@ -40,11 +40,12 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
     if (event?.target)
       this.confirmationService.confirm({
         target: event.target,
+        header: this.languageService.instant("app.actions.logout"),
         message: this.languageService.instant("app.prompt.logout"),
         acceptLabel: this.languageService.instant("app.actions.logout"),
         rejectLabel: this.languageService.instant("app.actions.cancel"),
         acceptButtonStyleClass:
-          "p-button-text p-button-outlined p-button-danger ",
+          "p-button-text p-button-outlined p-button-danger",
         icon: "pi pi-exclamation-triangle",
         accept: () => {
           this.router.navigate(["auth", "sign-out"]);
