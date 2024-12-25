@@ -1,4 +1,4 @@
-<div class="surface-ground px-4 md:px-6 py-4 lg:px-8" style="min-height: 100vh;">
+<div class="px-4 md:px-6 py-4 lg:px-8" style="min-height: 100vh;">
   <!-- <div class="text-center">
     <img *ngIf="data.appLogo" [src]="data.appLogo" height="70" class="mr-2" />
     <h3 routerLink="/" *ngIf="data.appName">{{ data.appName | uppercase }}</h3>
@@ -7,28 +7,31 @@
     <ul *ngIf="routes?.length"
       class="list-none m-0 p-0 flex flex-row lg:flex-column justify-content-evenly md:justify-content-between lg:justify-content-start mb-5 lg:pr-8 lg:mb-0">
       <li *ngFor="let route of routes" [routerLink]="route.routerLink"
-        [routerLinkActive]="routes.indexOf(route) != 0 ? 'surface-hover border-round' : ''">
+        [routerLinkActive]="route.routerLink != '..' ? 'surface-card border-round': ''">
         <a pRipple
           class="flex align-items-center cursor-pointer p-3 border-round text-800 hover:surface-hover transition-duration-150 transition-colors">
           <i *ngIf="route.icon " [class]="route.icon"></i>
           <span class="font-medium hidden md:block">{{ route?.label }}</span>
         </a>
       </li>
-      <li class="mt-5" (click)="confirm($event)">
+      <!-- <li class="mt-8" (click)="confirm($event)">
         <a pRipple
-          class="flex align-items-end cursor-pointer p-3 border-round text-800 hover:surface-hover transition-duration-150 transition-colors">
+          class="flex align-items-center cursor-pointer p-3 border-round text-800 hover:surface-hover transition-duration-150 transition-colors">
           <i [class]="'pi pi-sign-out mr-2'"></i>
           <span class="font-medium hidden md:block">{{ 'auth.sign-out' | translate }}</span>
         </a>
-      </li>
+      </li> -->
     </ul>
 
-    <div class="surface-card p-5 shadow-2 border-round flex-auto">
-      <div *ngIf="title || description">
-        <div class="text-3xl text-900 font-semibold text-lg mb-1" *ngIf="title">{{title}}</div>
+
+
+
+    <div class="p-5 flex-auto">
+      <div *ngIf="title || description" class="mb-3">
+        <div class="text-3xl md:text-6xl font-medium mb-1" *ngIf="title">{{title}}</div>
         <div class="text-500 line-height-2" *ngIf="description">{{description}}</div>
-        <p-divider></p-divider>
       </div>
+
       <ng-content></ng-content>
     </div>
   </div>
