@@ -30,7 +30,7 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
     this.route.data.pipe(tap((state) => (this.data = state))).subscribe();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onSignOut() {
     this.router.navigate(["auth", "sign-out"]);

@@ -7,7 +7,7 @@
     <ul *ngIf="routes?.length"
       class="list-none m-0 p-0 flex flex-row lg:flex-column justify-content-evenly md:justify-content-between lg:justify-content-start mb-5 lg:pr-8 lg:mb-0">
       <li *ngFor="let route of routes" [routerLink]="route.routerLink"
-        [routerLinkActive]="route.routerLink != '..' ? 'surface-card border-round': ''">
+        [routerLinkActive]="!route.routerLink.toString().includes('.') ? 'surface-card border-round': ''">
         <a pRipple
           class="flex align-items-center cursor-pointer p-3 border-round text-800 hover:surface-hover transition-duration-150 transition-colors">
           <i *ngIf="route.icon " [class]="route.icon"></i>
